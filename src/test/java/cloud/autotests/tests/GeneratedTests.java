@@ -5,8 +5,8 @@ import io.qameta.allure.Description;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.Selenide.title;
+import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selenide.*;
 import static io.qameta.allure.Allure.step;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -16,16 +16,15 @@ public class GeneratedTests extends TestBase {
     @Description("Soon to be implemented by you (or QA.GURU engineers)")
     @DisplayName("Поиск Montenegro it")
     void generatedTest() {
-        step("Открыть https://google.com", () -> {
-            step("// todo: just add selenium action");
-        });
+        step("Open url 'https://google.com'", () ->
+                open("https://google.com"));
 
         step("Ввести \"montenergo_it telegram\" в поле поиска", () -> {
-            step("// todo: just add selenium action");
+            $("[name=q]").setValue("montenergo_it telegram").pressEnter();
         });
 
         step("Проверить, что \"Montenegro IT\" появилось в результатах поиска", () -> {
-            step("// todo: just add selenium action");
+            $("[id=search]").shouldHave(text("Montenegro IT"));
         });
     }
 
